@@ -14,24 +14,65 @@
  * @package WordPress
  */
 
+define('WP_SITEURL', 'http://'.$_SERVER['SERVER_NAME']. '/wordpress');
+define('WP_HOME', 'http://'.$_SERVER['SERVER_NAME']);
+define('WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'].'/wp-content');
+define('WP_CONTENT_URL', 'http://'.$_SERVER['SERVER_NAME']).'/wp-content';
+
+
+if ($_SERVER['REMOTE_ADDR']=='127.0.0.1'){
+		define('WP_ENV', 'development');
+} else {
+		define('WP_ENV', 'production');
+
+
+}
+
 // ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define('DB_NAME', 'database_name_here');
 
-/** MySQL database username */
-define('DB_USER', 'username_here');
+if(WP_ENV == 'development'){
+		/** The name of the database for WordPress */
+		define('DB_NAME', 'dev.focusnatura.at');
 
-/** MySQL database password */
-define('DB_PASSWORD', 'password_here');
+		/** MySQL database username */
+		define('DB_USER', 'root');
 
-/** MySQL hostname */
-define('DB_HOST', 'localhost');
+		/** MySQL database password */
+		define('DB_PASSWORD', 'root');
 
-/** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
+		/** MySQL hostname */
+		define('DB_HOST', 'localhost');
 
-/** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
+		/** Database Charset to use in creating database tables. */
+		define('DB_CHARSET', 'utf8');
+
+		/** The Database Collate type. Don't change this if in doubt. */
+		define('DB_COLLATE', '');
+} else {
+		/** The name of the database for WordPress */
+		define('DB_NAME', 'database_name_here');
+
+		/** MySQL database username */
+		define('DB_USER', 'username_here');
+
+		/** MySQL database password */
+		define('DB_PASSWORD', 'password_here');
+
+		/** MySQL hostname */
+		define('DB_HOST', 'localhost');
+
+		/** Database Charset to use in creating database tables. */
+		define('DB_CHARSET', 'utf8');
+
+		/** The Database Collate type. Don't change this if in doubt. */
+		define('DB_COLLATE', '');
+
+}
+
+define('WP_DEFAULT_THEME', 'twentyfourteen');
+
+
+
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -69,7 +110,7 @@ $table_prefix  = 'wp_';
  * de_DE.mo to wp-content/languages and set WPLANG to 'de_DE' to enable German
  * language support.
  */
-define('WPLANG', '');
+define('WPLANG', 'en');
 
 /**
  * For developers: WordPress debugging mode.
@@ -78,7 +119,7 @@ define('WPLANG', '');
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
 
 /* That's all, stop editing! Happy blogging. */
 
