@@ -14,11 +14,12 @@
  * @package WordPress
  */
 
-define('WP_SITEURL', 'http://'.$_SERVER['SERVER_NAME']. '/wordpress');
+define('WP_SITEURL', 'http://'.$_SERVER['SERVER_NAME'] . '/wordpress');
 define('WP_HOME', 'http://'.$_SERVER['SERVER_NAME']);
-define('WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'].'/wp-content');
-define('WP_CONTENT_URL', 'http://'.$_SERVER['SERVER_NAME']).'/wp-content';
-
+define('WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] . '/wp-content');
+define('WP_CONTENT_URL', 'http://'.$_SERVER['SERVER_NAME'] . '/wp-content');
+define( 'WP_PLUGIN_DIR', $_SERVER['DOCUMENT_ROOT'] . '/wp-content/plugins' );
+define( 'WP_PLUGIN_URL', 'http://'.$_SERVER['SERVER_NAME'] . '/wp-content/plugins');
 
 if ($_SERVER['REMOTE_ADDR']=='127.0.0.1'){
 		define('WP_ENV', 'development');
