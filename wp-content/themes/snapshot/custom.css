@@ -1,0 +1,36 @@
+/* 
+WOO CUSTOM STYLESHEET
+---------------------
+
+Instructions:
+
+Add your custom styles here instead of style.css so it 
+is easier to update the theme. Simply copy an existing 
+style from style.css to this file, and modify it to 
+your liking.
+
+*/
+
+.pub {
+float:left;
+padding:20px 25px 0px 0px;
+clear:both;
+}
+
+.homeleft {
+float:left;
+clear:left;
+}
+
+.homemid {
+float:left;
+clear:none;
+padding:0px 0px 0px 103px;
+}
+
+.homeright {
+float:right;
+clear:right;
+
+}
+
