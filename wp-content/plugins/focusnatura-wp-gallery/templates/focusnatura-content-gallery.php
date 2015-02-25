@@ -7,6 +7,7 @@
  * @since Twenty Fourteen 1.0
  */
 ?>
+<?php get_header() ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php twentyfourteen_post_thumbnail(); ?>
@@ -46,75 +47,56 @@
 			<div class="gallery_clear"></div>
 			<div id="gallery_" class="photospace">
 					<!-- Start Advanced Gallery Html Containers -->
-					<div class="thumbs_wrap2">
-							<div class="thtumbs_wrap">
-									<div id="thumbs_" class="thumbnail_col" style="width: 90px; display: block; opacity: 1;">
+									<?php
+											/**
+											 * THUMBS output from lib/focusnatura-gallery.php
+											 * html markup with paggination
+											 *
+											 */
 
-									<!-- TODO link to next on click-->
-											<a class="advance-link" href="nextImage">
+											the_content();
 
-												<!-- TODO Gallery thumbs -->
+											?>
 
-											</a>
-
-
-
-
-									</div>
-							</div>
-					</div>
-					<!-- Start Advanced Gallery Html Containers -->
-					<div id="slideshow_" class="slideshow">
-							<span class="image-wrapper current">
 									<!-- TODO Gallery image -->
 
-							</span>
-					</div>
+
+									<?php $gallery=get_post_gallery($post, false);
+
+		$attachment_ids = explode(',',$gallery['ids'] );
+
+/*
+		echo '<pre>';
+//		var_dump(wp_get_attachment_metadata( $attachment_ids[1] ));
+									var_dump(wp_prepare_attachment_for_js(get_query_var( 'img' )));
+		echo '</pre>';*/
+
+		$selected_key = array_search( get_query_var( 'img' ), $attachment_ids );
+		$available_keys = count($attachment_ids)-1;
+
+		if ($selected_key < $available_keys){
+				// next in gallery
+				$next_id = $attachment_ids[$selected_key+1];
+		} else {
+				// first in gallery
+				$next_id = $attachment_ids[0];
+		}
+		?>
+				<!-- Start Advanced Gallery Html Containers -->
+				<div id="slideshow_" class="slideshow">
+						<span class="image-wrapper current">
+
+						<a href="<?= get_permalink( $post->ID ) ?>img/<?= $next_id ?>">
+								<?= wp_get_attachment_image( get_query_var( 'img' ), 'full' ); ?>
+						</a>
+						</span>
+				</div>
 
 			</div>
 			<div class="gallery_clear"></div>
 
 
-		<?php
-		/*
-		 *
-		 * Display Gallery
-		 *
-		 * */
-
-
-
-/*		echo '<pre>';
-		var_dump('query vars '.get_query_var('img'));
-		echo '</pre>';*/
-
-
-
-		$gallery=get_post_gallery($post, false);
-
-		$attachment_ids = explode(',',$gallery['ids'] );
-
-
-/*		echo '<pre>';
-		var_dump(wp_get_attachment_metadata( $attachment_ids[1] ));
-		echo '</pre>';*/
-
-
-		echo '<a href="imeage/attachment_id='.$attachment_ids[1] .'">';
-		echo wp_get_attachment_image( get_query_var('img'), 'full' );
-		echo '</a>';
-
-//		echo '<pre>';
-//		var_dump($post);
-//		echo '</pre>';
-
-
-//		echo '<pre>';
-//		var_dump(get_image_sizes());
-//		echo '</pre>';
-
-
-
+			<?php
 
 		function get_image_sizes( $size = '' ) {
 
@@ -160,22 +142,11 @@
 
 
 
-
-
-
-
-
-
-
-		the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ) );
-			wp_link_pages( array(
-				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfourteen' ) . '</span>',
-				'after'       => '</div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-			) );
 		?>
 	</div><!-- .entry-content -->
 
 	<?php the_tags( '<footer class="entry-meta"><span class="tag-links">', '', '</span></footer>' ); ?>
 </article><!-- #post-## -->
+
+
+<?php get_footer() ?>

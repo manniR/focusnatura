@@ -358,7 +358,8 @@ function photospace_scripts_method() {
 	wp_enqueue_script('jquery');
 	$photospace_wp_plugin_path = plugins_url()."/photospace";
 	wp_enqueue_style( 'photospace-styles',	$photospace_wp_plugin_path . '/gallery.css');
-	wp_enqueue_script( 'galleriffic', 		$photospace_wp_plugin_path . '/jquery.galleriffic.js');
+	//TODO
+	//wp_enqueue_script( 'galleriffic', 		$photospace_wp_plugin_path . '/jquery.galleriffic.js');
 }
 add_action('wp_enqueue_scripts', 'photospace_scripts_method');
 
@@ -578,6 +579,10 @@ function photospace_shortcode( $atts ) {
 						if ( !empty($include) ) {
 							$include = preg_replace( '/[^0-9,]+/', '', $include );
 							$_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+
+								echo '<pre>';
+								var_dump($_attachments);
+								echo '</pre>';
 
 							$attachments = array();
 							foreach ( $_attachments as $key => $val ) {

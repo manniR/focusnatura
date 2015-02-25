@@ -1,0 +1,57 @@
+.thumbs *{padding:0;margin:0; box-sizing: border-box;}
+html, body{width:100%;height:100%;min-width:100%;min-height:100%;position: relative;}
+.thumbs {width: 80px; position: relative; height: 600px; width: 80px; border: 1px solid #0000ff; overflow: hidden; }
+.thumbs>.thumbs-container{height: 560px; width:160px; position: absolute;left:0px;}
+.thumbs-container:after{content:''; display:block; clear:both;}
+.thumbs-container > ul { float: left; display: block; width: 80px; float: left; }
+.thumbs-container>ul>li{display: block}
+/*http://wellstyled.com/css-replace-text-by-image.html*/
+
+.thumb>a{display: block; width:80px;height: 80px; position: relative; overflow: hidden;
+    opacity: 0.5;}
+.thumb>a>span { display: block; width: 100%;height: 100%; position:absolute; lef:0;top:0;z-index: 1;}
+.thumb-selected>a, .thumb-selected>a:hover, .thumb>a:hover{opacity: 1;}
+
+.thumbs-nav>span>a { border: 1px solid #bbb;}
+/*.thumbs-nav>span>a>i { transform: translate(0, .7em);}*/
+.thumbs-nav{width: 80px; height: 40px;position: absolute; bottom:0;}
+.thumbs-nav>span{height: 100%;}
+.thumbs-nav>span>a{ line-height:40px;text-align: center;display:block;height: 100%;width: 40px;}
+
+.thumbs-nav a:hover{background: #ffff00;}
+.thumbs-nav .thumbs-prev{position:absolute; left:0;}
+.thumbs-nav .thumbs-next{position:absolute; right:0;}
+.disabled{display: none;}
+.enabled{display: inherit;}
+
+.x-0{
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -mozTransform: translate3d(0px, 0px, 0px);
+    -msTransform: translate3d(0px, 0px, 0px);
+    -transform: translate3d(0px, 0px, 0px);
+    -webkit-transition: transform .5s ease-in-out;
+    -mozTransition: transform .5s ease-in-out;
+    -msTransition: transform .5s ease-in-out;
+    -transition: transform .5s ease-in-out;
+}
+.x-80{
+    -webkit-transform: translate3d(-80px, 0px, 0px);
+    -mozTransform: translate3d(-80px, 0px, 0px);
+    -msTransform: translate3d(-80px, 0px, 0px);
+    -transform: translate3d(-80px, 0px, 0px);
+    -webkit-transition: transform .5s ease-in-out;
+    -mozTransition: transform .5s ease-in-out;
+    -msTransition: transform .5s ease-in-out;
+    -transition: transform .5s ease-in-out;
+}
+.x-160{
+
+    -webkit-transform: translate3d(-160px, 0px, 0px);
+    -mozTransform: translate3d(-160px, 0px, 0px);
+    -msTransform: translate3d(-160px, 0px, 0px);
+    -transform: translate3d(-160px, 0px, 0px);
+    -webkit-transition: transform .5s ease-in-out;
+    -mozTransition: transform .5s ease-in-out;
+    -msTransition: transform .5s ease-in-out;
+    -transition: transform .5s ease-in-out;
+}

@@ -36,6 +36,8 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 474;
 }
 
+
+
 /**
  * Twenty Fourteen only works in WordPress 3.6 or later.
  */
