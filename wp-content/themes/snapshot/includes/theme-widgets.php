@@ -9,11 +9,11 @@ function Showcase_Tag_Cloud()
         	<h3 class="hl"><?php _e('Showcase Tags',woothemes); ?></h3>
 			<ul><li class="tagcloud"><?php if (function_exists('wp_tag_cloud')) { wp_tag_cloud('smallest=10&largest=18'); } ?></li></ul>
 		</div>
-	
-<?php 	
+
+<?php
 
 }
 
-register_sidebar_widget('Snapshot Tag Cloud', 'Showcase_Tag_Cloud');   
+//wp_register_sidebar_widget('Snapshot Tag Cloud', 'Showcase_Tag_Cloud', );
 
 ?>

@@ -21,7 +21,7 @@
 
 <?php if ($comments) : ?>
 
-	<h2><?php comments_number(__('0 Comments',woothemes), __('1 Comment',woothemes), __('% Comments',woothemes) );?></h2>
+<!--	<h2>--><?php //comments_number(__('0 Comments',woothemes), __('1 Comment',woothemes), __('% Comments',woothemes) );?><!--</h2>-->
 
 	<ol class="commentlist">
 
@@ -37,12 +37,12 @@
          ?>
 
 			<span class="gravatar"><img src="<?php echo $grav_url; ?>" width="60" height="60" alt="" /></span>
-			
+
 			<cite><?php comment_author_link() ?> <a class="metadata" href="#comment-<?php comment_ID() ?>" title="">(<?php comment_date('F jS, Y') ?> at <?php comment_time() ?>)</a></cite>
 			<div style="margin-bottom:10px;clear:left;"></div>
 
 			<?php comment_text() ?>
-            
+
             <div style="clear:both;height:10px;"></div>
 
 		</li>

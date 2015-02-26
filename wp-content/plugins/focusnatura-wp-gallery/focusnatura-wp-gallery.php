@@ -8,7 +8,17 @@ Version: 1.0
 Author URI:
 */
 
-require ('lib/focusnatura_gallery.php');
+
+add_action('init', 'app_output_buffer');
+function app_output_buffer() {
+
+  ob_start();
+
+} // soi_output_buffer
+
+
+
+require ('lib/focusnatura_gallery_shortcode.php');
 
 /*add_filter('query_vars', 'parameter_queryvars' );
 function parameter_queryvars( $qvars )
@@ -25,6 +35,26 @@ function flushRules()
 		global $wp_rewrite;
 		$wp_rewrite->flush_rules();
 }*/
+
+
+//add_action('parse_query', 'fn_parse_request');
+//add_action('pre_get_posts', 'fn_parse_request');
+//add_action('the_post', 'fn_parse_request');
+function fn_parse_request ($data){
+   /* echo '<pre>';
+    var_dump($data);
+    echo '</pre>';*/
+
+    global $post;
+
+    echo $post->post_content;
+
+    echo get_post_gallery($post->ID);
+
+
+    exit;
+}
+
 
 
 /**
@@ -50,10 +80,10 @@ function focusnatura_query_vars( $query_vars ){
  * TEMPLATE
  */
 
-add_filter( 'template_include', 'check_for_gallery' );
+//add_filter( 'template_include', 'check_for_gallery' );
 
 function check_for_gallery( $original_template ) {
-    if ( is_single() && get_post_gallery() ) {
+    if ( get_post_gallery() ) {
         //has gallery if not working try -> plugin_dir_path( __FILE__ )
         return plugin_dir_path( __FILE__ ).'templates/focusnatura-content-gallery.php';
     } else {
@@ -65,6 +95,8 @@ function check_for_gallery( $original_template ) {
  * CSS / JS
  */
 
+add_action( 'wp_enqueue_scripts', 'focusnatura_gallery_scripts' );
+
 function focusnatura_gallery_scripts() {
     wp_register_style( 'focusnatura-gallery-css',  plugin_dir_url( __FILE__ ) . 'css/focusnatura-gallery.css',array(), null );
     wp_enqueue_style( 'focusnatura-gallery-css' );
@@ -73,4 +105,6 @@ function focusnatura_gallery_scripts() {
     wp_register_script('focusnatura-gallery-js', plugin_dir_url( __FILE__ ) . 'js/focusnatura-gallery.js',array('jquery'), null, true );
     wp_enqueue_script( 'focusnatura-gallery-js' );
 }
-add_action( 'wp_enqueue_scripts', 'focusnatura_gallery_scripts' );
+
+
+

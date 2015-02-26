@@ -3,35 +3,37 @@
 <div id="content" class="fullspan">
 
 	<div class="container_16 clearfix">
-			
+
 		<div id="leftcontent" class="grid_12">
-		
+SINGLE
     		<?php while (have_posts()) : the_post(); ?>
 
 				<?php
-            
+
             	$layout = get_option('woo_layout');
 
+				    $layout='2-gallery.php';
+
             	include('layouts/'.$layout);
-            
-        		?>                       
-			
+
+        		?>
+
 			<?php endwhile; ?>
-            
-            <div style="clear:both;height:15px;"></div> 
-                        
+
+            <div style="clear:both;height:15px;"></div>
+
              <div id="comments">
             	<?php comments_template(); ?>
-            </div>	
-			
+            </div>
+
 			<div id="postnav">
 				<?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } ?>
-			</div><!-- /postnav -->						
+			</div><!-- /postnav -->
 
-		</div><!-- /leftcontent --> 
-		
+		</div><!-- /leftcontent -->
+
 		<?php get_sidebar(); ?>
-        
+
 	</div><!-- /container_16 -->
 
 </div><!-- /content -->

@@ -7,6 +7,36 @@
 // Set path to WooFramework and theme specific functions
 $functions_path = TEMPLATEPATH . '/functions/';
 $includes_path = TEMPLATEPATH . '/includes/';
+/*
+//add_action('init', 'app_output_buffer');
+function app_output_buffer() {
+
+  ob_start();
+
+} // soi_output_buffer*/
+
+
+/**
+ * ENDPOINT
+ * rewrites /img/6 to ?img=6 -> get_query_var('img') = 6
+ */
+
+
+add_action('deprecated_function_run', 'logme');
+function logme($data){
+  echo '<pre>';
+  var_dump($data);
+  echo '</pre>';
+
+  echo '<pre>';
+  var_dump(debug_print_backtrace());
+  echo '</pre>';
+
+}
+
+
+//require_once ('includes/focusnatura_gallery_shortcode.php');
+
 
 // WooFramework
 require_once ($functions_path . 'admin-init.php');			// Framework Init
